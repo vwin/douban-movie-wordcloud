@@ -42,9 +42,11 @@ def getCommentsById(movieId, pageNum):
         soup = bs(html_data, "html.parser")
         comment_div_lits = soup.find_all("div", class_="comment")
         for item in comment_div_lits:
-            if item.find_all("p")[0].string is not None:
-                eachCommentList.append(item.find_all("p")[0].string)
-                # print(eachCommentList)
+            # 豆瓣网页元素变更
+            # print(item.find_all(name='span', attrs={"class": "short"})[0].string)
+            if item.find_all(name='span', attrs={"class": "short"})[0].string is not None:
+                eachCommentList.append(item.find_all(name='span', attrs={"class": "short"})[0].string)
+                print(eachCommentList)
     except RequestException as e:
         print("请求问题，原因：%s" % e)
 
@@ -61,7 +63,7 @@ def main(movieId, movieName):
         # 将列表中的数据转换为字符串
     comments = ""
     for k in range(len(commentList)):
-        # print(commentList[k])
+        print(commentList[k])
         for m in range(len(commentList[k])):
             comments = comments + str(commentList[k][m]).strip()
     # print(comments)
@@ -90,7 +92,7 @@ def main(movieId, movieName):
     # 统计词频
     words_stat = words_df.groupby(by=["segment"])["segment"].agg({"计数": numpy.size})
     words_stat = words_stat.reset_index().sort_values(by=["计数"], ascending=False)
-    # print(words_stat)
+    print(words_stat)
 
     # 用词云进行显示
     # wordcloud = WordCloud(font_path="./SimHei.ttf", background_color="white", max_font_size=80, width=1000, height=860,
@@ -119,3 +121,4 @@ if __name__ == "__main__":
     # main("4920389", "头号玩家")
     # main("26366496", "邪不压正")
     main("26752088", "我不是药神")
+    # main("27605698", "西虹市首富")
