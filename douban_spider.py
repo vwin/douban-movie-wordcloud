@@ -47,6 +47,9 @@ def getCommentsById(movieId, pageNum):
             if item.find_all(name='span', attrs={"class": "short"})[0].string is not None:
                 eachCommentList.append(item.find_all(name='span', attrs={"class": "short"})[0].string)
                 print(eachCommentList)
+        if eachCommentList is None:
+            print("未获取到评论！")
+            exit(1)
     except RequestException as e:
         print("请求问题，原因：%s" % e)
 
