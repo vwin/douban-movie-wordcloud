@@ -2,17 +2,11 @@
 # coding: utf-8
 import itchat
 import os
-
-# import importlib
 import pandas as pd
 import matplotlib.pyplot as plot
 from wordcloud import WordCloud
 from pyecharts import Bar, Page, Pie
 import jieba
-
-# import sys
-# importlib.reload(sys)
-# sys.setdefaultencoding("utf-8")
 
 # 获取所有的群聊列表
 def getRoomList():
