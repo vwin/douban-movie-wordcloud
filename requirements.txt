@@ -5,3 +5,5 @@ requests==2.18.4
 matplotlib==2.2.2
 pandas==0.22.0
 beautifulsoup4==4.6.0
+pyecharts
+pyecharts-snapshot

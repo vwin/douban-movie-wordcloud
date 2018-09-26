@@ -116,3 +116,6 @@ venv.bak/
 pyvenv.cfg
 pip-selfcheck.json
 .idea
+.html
+/itchat.pkl
+/render.html
