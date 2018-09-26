@@ -179,5 +179,6 @@ def main(room):
 
 
 if __name__ == "__main__":
+    # room是群名称
     room = "hhh"
     main(room)
