@@ -1,9 +1,9 @@
-wordcloud==1.4.1
-jieba==0.39
-numpy==1.14.2
-requests==2.18.4
-matplotlib==2.2.2
-pandas==0.22.0
-beautifulsoup4==4.6.0
+wordcloud==^1.4.1
+jieba==^0.39
+numpy==^1.14.2
+requests==^2.20.0
+matplotlib==^2.2.2
+pandas==^0.22.0
+beautifulsoup4==^4.6.0
 pyecharts
 pyecharts-snapshot
