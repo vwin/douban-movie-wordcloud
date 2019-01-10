@@ -12,10 +12,8 @@ import matplotlib.pyplot as plt
 
 import matplotlib
 
-
 matplotlib.rcParams["figure.figsize"] = (10.0, 5.0)
 import warnings
-
 
 warnings.filterwarnings("ignore")
 
@@ -28,13 +26,13 @@ def getCommentsById(movieId, pageNum):
     else:
         return False
     requrl = (
-        "https://movie.douban.com/subject/"
-        + movieId
-        + "/comments"
-        + "?"
-        + "start="
-        + str(start)
-        + "&limit=20"
+            "https://movie.douban.com/subject/"
+            + movieId
+            + "/comments"
+            + "?"
+            + "start="
+            + str(start)
+            + "&limit=20"
     )
     try:
         resp = requests.get(requrl)
@@ -128,4 +126,6 @@ if __name__ == "__main__":
     # main("27622447","小偷家族")
     # main("25921812", "驴得水")
     # main("27110296","无名之辈")
-    main("26874505", "人生果实")
+    # main("26874505", "人生果实")
+    # main("26848645", "将夜")
+    main("25716096", "狗十三")
