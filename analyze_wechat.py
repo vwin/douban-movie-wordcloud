@@ -157,8 +157,8 @@ def main(room):
     gsq = itchat.update_chatroom(roomMsg[0]["UserName"], detailedMember=True)
     df_friends = pd.DataFrame(gsq["MemberList"])  # 取出其中的用户信息并转为dataframe
 
-    # sexs = getSex(df_friends)  # 获取性别统计
-    # getSexCount(sexs, "公司性别统计图")  # 制作性别统计图，第一个参数为性别统计的结果，第二个参数为该图的名称
+    sexs = getSex(df_friends)  # 获取性别统计
+    getSexCount(sexs, "公司性别统计图")  # 制作性别统计图，第一个参数为性别统计的结果，第二个参数为该图的名称
 
     # city = df_friends['Province']   #取出省份信息
     # City_count = city.value_counts()[:15]
@@ -168,11 +168,11 @@ def main(room):
     # makeWorldCount(df_friends['NickName'])  #制作词云，传入用户昵称
     # makeWorldCount(signature)
 
-    # analyFemale(df_friends)
-    # analyMale(df_friends)
+    analyFemale(df_friends)
+    analyMale(df_friends)
 
 
 if __name__ == "__main__":
     # room是群名称
-    room = "hhh"
+    room = "xx"
     main(room)

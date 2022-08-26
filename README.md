@@ -10,3 +10,19 @@
 2. 群内位置分布
 3. 群内男性签名词云
 4. 群内女性签名词云
+
+# 报错解决
+1. pyecharts版本问题，pip install pyecharts==0.1.9.5  https://blog.csdn.net/Nurbiya_K/article/details/105354670
+2. itChat问题，显示错误信息：
+   ```shell
+   utils.msg_formatter(m, 'Content')
+   File "D:\envPython\lib\site-packages\itchat\utils.py", line 69, in msg_formatter
+   d[k]  = htmlParser.unescape(d[k])
+   AttributeError: 'HTMLParser' object has no attribute 'unescape'
+   网上的解决方式很多，没有一个真正解决问题了，最简单的方式是修改
+   site-packages\itchat\utis.py
+   
+   from html import unescape
+   # 修改d[k] = htmlParser.unescape(d[k])
+   d[k] = unescape(d[k])
+   ```
