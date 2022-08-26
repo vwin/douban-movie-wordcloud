@@ -20,6 +20,7 @@ warnings.filterwarnings("ignore")
 
 # 抓取电影评论
 def getCommentsById(movieId, pageNum):
+    headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36'}
     eachCommentList = []
     if pageNum > 0:
         start = (pageNum - 1) * 20
@@ -35,7 +36,7 @@ def getCommentsById(movieId, pageNum):
             + "&limit=20"
     )
     try:
-        resp = requests.get(requrl)
+        resp = requests.get(requrl, headers=headers)
         html_data = resp.content.decode("utf-8")
         soup = bs(html_data, "html.parser")
         comment_div_lits = soup.find_all("div", class_="comment")
@@ -86,12 +87,14 @@ def main(movieId, movieName):
         sep="t",
         names=["stopword"],
         encoding="utf-8",
+        error_bad_lines=False
     )
     words_df = words_df[~words_df.segment.isin(stopwords.stopword)]
-    # print(words_df)
+    print("*****")
+    print(words_df)
 
     # 统计词频
-    words_stat = words_df.groupby(by=["segment"])["segment"].agg({"计数": numpy.size})
+    words_stat = words_df.groupby(by=["segment"])["segment"].agg([("计数",numpy.size)])
     words_stat = words_stat.reset_index().sort_values(by=["计数"], ascending=False)
     print(words_stat)
 
@@ -128,4 +131,6 @@ if __name__ == "__main__":
     # main("27110296","无名之辈")
     # main("26874505", "人生果实")
     # main("26848645", "将夜")
-    main("25716096", "狗十三")
+    # main("25716096", "狗十三")
+    # main("35183042", "独行月球")
+    main("35360684", "新神榜杨戬")
